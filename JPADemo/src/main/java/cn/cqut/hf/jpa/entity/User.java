@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,5 +20,8 @@ public class User {
     private String lastName;
     /*省略掉*/
     private String email;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="uid")
+    private Set<Address> addresses;
 
 }
